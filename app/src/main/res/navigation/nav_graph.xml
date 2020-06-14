@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listeningFragment">
+
+    <fragment
+        android:id="@+id/listeningFragment"
+        android:name="com.eslam.speech_to_text_demoapp.ListeningFragment"
+        android:label="fragment_listening"
+        tools:layout="@layout/fragment_listening" >
+        <action
+            android:id="@+id/action_listeningFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.eslam.speech_to_text_demoapp.SecondFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_second" />
+</navigation>

@@ -1,0 +1,2 @@
+rootProject.name='Speech-To-Text-DemoApp'
+include ':app'
