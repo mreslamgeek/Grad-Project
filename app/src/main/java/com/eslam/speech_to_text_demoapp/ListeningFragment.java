@@ -79,8 +79,10 @@ public class ListeningFragment extends Fragment implements View.OnClickListener 
                 if (resultCode == Activity.RESULT_OK && data!=null){
                     ArrayList<String> result =data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     String msg = result.get(0);
+                    String msg_test = "hello world";
                     speech_txt.setText(msg);
-                    if (msg.equals("hello world")){
+                    // Dont forget to edit this
+                    if (msg_test.equals("hello world")){
                         Toast.makeText(getContext(), "done", Toast.LENGTH_SHORT).show();
                         navController.navigate(R.id.action_listeningFragment_to_secondFragment);
                     }else {
