@@ -13,10 +13,26 @@
         <action
             android:id="@+id/action_listeningFragment_to_secondFragment"
             app:destination="@id/secondFragment" />
+        <action
+            android:id="@+id/action_listeningFragment_to_show_number"
+            app:destination="@id/show_number" />
+        <action
+            android:id="@+id/action_listeningFragment_to_callingFragment"
+            app:destination="@id/callingFragment" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.eslam.speech_to_text_demoapp.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" />
+    <fragment
+        android:id="@+id/show_number"
+        android:name="com.eslam.speech_to_text_demoapp.ShowNumberFragment"
+        android:label="fragment_show_number"
+        tools:layout="@layout/fragment_show_number" />
+    <fragment
+        android:id="@+id/callingFragment"
+        android:name="com.eslam.speech_to_text_demoapp.CallingFragment"
+        android:label="fragment_calling"
+        tools:layout="@layout/fragment_calling" />
 </navigation>
