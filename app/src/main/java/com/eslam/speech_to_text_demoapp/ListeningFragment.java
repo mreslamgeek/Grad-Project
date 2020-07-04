@@ -89,6 +89,8 @@ public class ListeningFragment extends Fragment implements View.OnClickListener 
                         navController.navigate(R.id.action_listeningFragment_to_show_number);
                     }else if(msg.contains("call")){
                         navController.navigate(R.id.action_listeningFragment_to_callingFragment);
+                    }else if(msg.contains("contacts")){
+                        navController.navigate(R.id.action_listeningFragment_to_contacts_List);
                     }else{
                         Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show();
                     }

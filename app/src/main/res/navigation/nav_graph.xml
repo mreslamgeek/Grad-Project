@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_listeningFragment_to_callingFragment"
             app:destination="@id/callingFragment" />
+        <action
+            android:id="@+id/action_listeningFragment_to_contacts_List"
+            app:destination="@id/contacts_List" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
@@ -35,4 +38,9 @@
         android:name="com.eslam.speech_to_text_demoapp.CallingFragment"
         android:label="fragment_calling"
         tools:layout="@layout/fragment_calling" />
+    <fragment
+        android:id="@+id/contacts_List"
+        android:name="com.eslam.speech_to_text_demoapp.Contacts_List"
+        android:label="fragment_contacts__list"
+        tools:layout="@layout/fragment_contacts__list" />
 </navigation>
