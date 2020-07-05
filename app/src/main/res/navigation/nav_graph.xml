@@ -25,6 +25,14 @@
         <action
             android:id="@+id/action_listeningFragment_to_batteryFragment"
             app:destination="@id/batteryFragment" />
+            android:id="@+id/action_listeningFragment_to_show_number"
+            app:destination="@id/show_number" />
+        <action
+            android:id="@+id/action_listeningFragment_to_callingFragment"
+            app:destination="@id/callingFragment" />
+        <action
+            android:id="@+id/action_listeningFragment_to_contacts_List"
+            app:destination="@id/contacts_List" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
@@ -51,4 +59,18 @@
         android:name="com.eslam.speech_to_text_demoapp.BatteryFragment"
         android:label="fragment_battery"
         tools:layout="@layout/fragment_battery" />
+        android:id="@+id/show_number"
+        android:name="com.eslam.speech_to_text_demoapp.ShowNumberFragment"
+        android:label="fragment_show_number"
+        tools:layout="@layout/fragment_show_number" />
+    <fragment
+        android:id="@+id/callingFragment"
+        android:name="com.eslam.speech_to_text_demoapp.CallingFragment"
+        android:label="fragment_calling"
+        tools:layout="@layout/fragment_calling" />
+    <fragment
+        android:id="@+id/contacts_List"
+        android:name="com.eslam.speech_to_text_demoapp.Contacts_List"
+        android:label="fragment_contacts__list"
+        tools:layout="@layout/fragment_contacts__list" />
 </navigation>

@@ -81,10 +81,15 @@ public class ListeningFragment extends Fragment implements View.OnClickListener 
                 if (resultCode == Activity.RESULT_OK && data!=null){
                     ArrayList<String> result =data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     String msg = result.get(0).toLowerCase();
+
+                    //String msg_test = "hello world";
+
                     speech_txt.setText(msg);
+                    // Dont forget to edit this
                     if (msg.equals("hello world")){
                         Toast.makeText(getContext(), "done", Toast.LENGTH_SHORT).show();
                         navController.navigate(R.id.action_listeningFragment_to_secondFragment);
+
                     }else if(msg.equals("read sms")){
                         navController.navigate(R.id.action_listeningFragment_to_readFragment);
 
@@ -97,6 +102,14 @@ public class ListeningFragment extends Fragment implements View.OnClickListener 
                     }
                     else if(msg.equals("battery")) {
                         navController.navigate(R.id.action_listeningFragment_to_batteryFragment);
+
+                    }else if(msg.contains("show phone number")){
+                        navController.navigate(R.id.action_listeningFragment_to_show_number);
+                    }else if(msg.contains("call")){
+                        navController.navigate(R.id.action_listeningFragment_to_callingFragment);
+                    }else if(msg.contains("contacts")){
+                        navController.navigate(R.id.action_listeningFragment_to_contacts_List);
+
                     }else{
                         Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show();
 
