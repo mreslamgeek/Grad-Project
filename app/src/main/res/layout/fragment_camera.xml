@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CameraFragment"
+    android:orientation="vertical">
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Record Video "
+        android:onClick="recordVideo"
+        android:id="@+id/btn_video"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="55dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take a Picture"
+        android:id="@+id/btn_photo"
+        android:onClick="btn_photo"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="55dp"/>
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="55dp"
+        android:id="@+id/imgView"/>
+
+
+
+</LinearLayout>

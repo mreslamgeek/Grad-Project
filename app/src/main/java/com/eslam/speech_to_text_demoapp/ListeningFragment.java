@@ -14,7 +14,10 @@ import android.speech.RecognizerIntent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +33,6 @@ public class ListeningFragment extends Fragment implements View.OnClickListener 
     private ImageButton speech_btn;
     private TextView speech_txt;
     private NavController navController;
-
 
     public ListeningFragment() {
         // Required empty public constructor
@@ -57,11 +59,11 @@ public class ListeningFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.speech_btn:
-                _listeningVoice();
-                break;
-        }
+        case R.id.speech_btn:
+            _listeningVoice();
+            break;
     }
+}
 
     private void _listeningVoice() {
         Intent speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -79,21 +81,41 @@ public class ListeningFragment extends Fragment implements View.OnClickListener 
                 if (resultCode == Activity.RESULT_OK && data!=null){
                     ArrayList<String> result =data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     String msg = result.get(0).toLowerCase();
+
                     //String msg_test = "hello world";
+
                     speech_txt.setText(msg);
                     // Dont forget to edit this
                     if (msg.equals("hello world")){
                         Toast.makeText(getContext(), "done", Toast.LENGTH_SHORT).show();
                         navController.navigate(R.id.action_listeningFragment_to_secondFragment);
+
+                    }else if(msg.equals("read sms")){
+                        navController.navigate(R.id.action_listeningFragment_to_readFragment);
+
+                    }
+                    else if(msg.equals("send sms")) {
+                        navController.navigate(R.id.action_listeningFragment_to_sendFragment);
+                    }
+                    else if(msg.equals("open camera")) {
+                        navController.navigate(R.id.action_listeningFragment_to_cameraFragment2);
+                    }
+                    else if(msg.equals("battery")) {
+                        navController.navigate(R.id.action_listeningFragment_to_batteryFragment);
+
                     }else if(msg.contains("show phone number")){
                         navController.navigate(R.id.action_listeningFragment_to_show_number);
                     }else if(msg.contains("call")){
                         navController.navigate(R.id.action_listeningFragment_to_callingFragment);
                     }else if(msg.contains("contacts")){
                         navController.navigate(R.id.action_listeningFragment_to_contacts_List);
+
                     }else{
                         Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show();
+
+
                     }
+
                 }
                 break;
 

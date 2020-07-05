@@ -22,9 +22,14 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
 
     private TextToSpeech mTTS;
     private EditText words;
+
+    private Button _TTS_Confuser;
+    private TextView carrier_Name, charge_Code;
+
     private Button _TTS_Confuser, btn_showNumber;
     private TextView phone_number;
     private String NetworkName;
+
 
     public SecondFragment() {
         // Required empty public constructor
@@ -61,6 +66,11 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
         words = view.findViewById(R.id.et_text);
         _TTS_Confuser = view.findViewById(R.id.btn_text_to_voice);
         _TTS_Confuser.setOnClickListener(this);
+
+        carrier_Name = view.findViewById(R.id.txt_carrier_name);
+        charge_Code = view.findViewById(R.id.txt_charge_code);
+
+
         btn_showNumber.setOnClickListener(this);
 
     }
@@ -69,12 +79,42 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_text_to_voice:
-                _Transfer_Text_To_Voice();
+                //_Transfer_Text_To_Voice();
+                _getData();
                 break;
+
             case R.id.btn_show_phonenumber:
                 show_carrier_name();
                 break;
+
         }
+
+    }
+
+    private void _getData() {
+
+        //Must Modify entered number to be just 14 integer number
+        String charge_code = words.getText().toString();
+        TelephonyManager manager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+        String CarrierName = manager.getNetworkOperatorName().toLowerCase();
+        carrier_Name.setText(CarrierName);
+
+
+        if (CarrierName.contains("orange")) {
+            charge_Code.setText("#102*" + charge_code + "#");
+        } else if (CarrierName.contains("vodafone")) {
+            charge_Code.setText("*858*" + charge_code + "#");
+        } else if (CarrierName.contains("etisalat")) {
+            charge_Code.setText("*655*" + charge_code + "#");
+        } else if (CarrierName.contains("we")) {
+            charge_Code.setText("*555*" + charge_code + "#");
+        } else {
+            charge_Code.setText("Cannot Find Network");
+
+        }
+
+        //Must Modify to make call to charging number and return respond
+
 
     }
 
@@ -100,6 +140,8 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
         String message = words.getText().toString();
         mTTS.setPitch(0.8f);
         mTTS.setSpeechRate(0.5f);
+
+        mTTS.speak(message, TextToSpeech.QUEUE_FLUSH, null);
         mTTS.speak(NetworkName, TextToSpeech.QUEUE_FLUSH, null);
     }
 }
