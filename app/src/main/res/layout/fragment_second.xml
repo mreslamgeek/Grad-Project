@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".SecondFragment">
-
 
 
     <EditText
@@ -24,21 +23,18 @@
 
     <Button
         android:id="@+id/btn_text_to_voice"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/outterline_gradient_btn"
-        android:text="Say it!"
+        android:text="Charge Balance"
         android:textAllCaps="false"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_text" />
 
-    <TextView
+    <!--    <TextView
         android:id="@+id/txt_carrier_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -50,6 +46,22 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_phone_number" />-->
+
+
+    <TextView
+        android:id="@+id/txt_phone_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/open_sans"
+        android:text="Network Provider"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_text_to_voice" />
 
     <TextView
@@ -57,41 +69,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text="Charge Code"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_carrier_name" />
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_text" />
-
-    <Button
-        android:id="@+id/btn_show_phonenumber"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/outterline_gradient_btn"
-        android:text="Show Number"
-        android:textAllCaps="false"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_text_to_voice"
-        app:layout_constraintStart_toEndOf="@+id/btn_text_to_voice"
-        app:layout_constraintTop_toTopOf="@+id/btn_text_to_voice" />
-
-    <TextView
-        android:id="@+id/txt_phone_number"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/open_sans"
-        android:text="Phone Number ..."
-        android:textSize="18sp"
+        android:layout_marginEnd="8dp"
+        android:text="Code.."
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_text_to_voice" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_phone_number" />
 </androidx.constraintlayout.widget.ConstraintLayout>

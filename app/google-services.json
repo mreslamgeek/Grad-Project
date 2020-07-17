@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "96494687606",
+    "firebase_url": "https://vab-graduation-project.firebaseio.com",
+    "project_id": "vab-graduation-project",
+    "storage_bucket": "vab-graduation-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96494687606:android:98ffbcfa1453e044e59657",
+        "android_client_info": {
+          "package_name": "com.eslam.speech_to_text_demoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96494687606-v1hdql1tut35qhmacgp9rfer4flicv5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBBffP4E8hfN9LYIUvyDiLaQyUK5tmorI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96494687606-v1hdql1tut35qhmacgp9rfer4flicv5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -50,26 +50,31 @@ public class CallingFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.call_number_btn:
-                makePhoneCall();
+//                makePhoneCall(txt_calling_number.getText().toString());
+                ((MainActivity) getActivity()).makePhoneCall(txt_calling_number.getText().toString().trim());
+
                 break;
         }
     }
 
+/*
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
         if (requestCode == REQUEST_CALL) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                makePhoneCall();
+                makePhoneCall(txt_calling_number.getText().toString());
             }else{
                 Toast.makeText(getContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
             }
         }
 
     }
+*/
 
-    private void makePhoneCall() {
-        String phone_number = txt_calling_number.getText().toString();
+/*
+    public void makePhoneCall(String phone_number) {
+
         if (phone_number.trim().length() > 0) {
             if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
@@ -83,5 +88,6 @@ public class CallingFragment extends Fragment implements View.OnClickListener {
         }
 
     }
+*/
 
 }

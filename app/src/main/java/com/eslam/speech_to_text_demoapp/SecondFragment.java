@@ -1,35 +1,30 @@
 package com.eslam.speech_to_text_demoapp;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.util.Locale;
-
 public class SecondFragment extends Fragment implements View.OnClickListener {
 
-    private TextToSpeech mTTS;
+    //    private TextToSpeech mTTS;
     private EditText words;
 
-    private Button _TTS_Confuser;
-    private TextView carrier_Name, charge_Code;
+    private TextView charge_Code;
 
-    private Button _TTS_Confuser, btn_showNumber;
+    private Button _charge_btn;
     private TextView phone_number;
-    private String NetworkName;
-
 
     public SecondFragment() {
         // Required empty public constructor
@@ -46,9 +41,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btn_showNumber = view.findViewById(R.id.btn_show_phonenumber);
-        phone_number = view.findViewById(R.id.txt_phone_number);
-        mTTS = new TextToSpeech(view.getContext(), new TextToSpeech.OnInitListener() {
+/*        mTTS = new TextToSpeech(view.getContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int i) {
                 if (i == TextToSpeech.SUCCESS) {
@@ -61,17 +54,14 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
                     }
                 }
             }
-        });
+        });*/
+        phone_number = view.findViewById(R.id.txt_phone_number);
 
         words = view.findViewById(R.id.et_text);
-        _TTS_Confuser = view.findViewById(R.id.btn_text_to_voice);
-        _TTS_Confuser.setOnClickListener(this);
-
-        carrier_Name = view.findViewById(R.id.txt_carrier_name);
         charge_Code = view.findViewById(R.id.txt_charge_code);
 
-
-        btn_showNumber.setOnClickListener(this);
+        _charge_btn = view.findViewById(R.id.btn_text_to_voice);
+        _charge_btn.setOnClickListener(this);
 
     }
 
@@ -79,12 +69,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_text_to_voice:
-                //_Transfer_Text_To_Voice();
                 _getData();
-                break;
-
-            case R.id.btn_show_phonenumber:
-                show_carrier_name();
                 break;
 
         }
@@ -94,30 +79,44 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
     private void _getData() {
 
         //Must Modify entered number to be just 14 integer number
-        String charge_code = words.getText().toString();
+        String chargeCode = words.getText().toString();
         TelephonyManager manager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-        String CarrierName = manager.getNetworkOperatorName().toLowerCase();
-        carrier_Name.setText(CarrierName);
+        String network_name = manager.getNetworkOperatorName().toLowerCase();
+        phone_number.setText(network_name);
+
+        Uri valid_code = null;
+        chargeCode.trim();
+
+        if (network_name.contains("orange")) {
+//            valid_code = Uri.parse (Uri.decode("#")+"102"+Uri.decode("*") + chargeCode + Uri.decode("#"));
 
 
-        if (CarrierName.contains("orange")) {
-            charge_Code.setText("#102*" + charge_code + "#");
-        } else if (CarrierName.contains("vodafone")) {
-            charge_Code.setText("*858*" + charge_code + "#");
-        } else if (CarrierName.contains("etisalat")) {
-            charge_Code.setText("*655*" + charge_code + "#");
-        } else if (CarrierName.contains("we")) {
-            charge_Code.setText("*555*" + charge_code + "#");
+
+//            valid_code = Uri.decode("#")+"102"+Uri.decode("*")+Uri.parse(chargeCode)+Uri.decode("#");
+        } else if (network_name.contains("vodafone")) {
+//            valid_code = ("*858*" + chargeCode + "#");
+        } else if (network_name.contains("etisalat")) {
+//            valid_code = ("*655*" + chargeCode + "#");
+        } else if (network_name.contains("we")) {
+//            valid_code = ("*555*" + chargeCode + "#");
         } else {
             charge_Code.setText("Cannot Find Network");
 
         }
 
-        //Must Modify to make call to charging number and return respond
+//        Toast.makeText(getContext(), valid_code.toString(), Toast.LENGTH_SHORT).show();
+        charge_Code.setText(valid_code.toString());
+//        ((MainActivity) getActivity())._Transfer_Text_To_Voice(charge_Code.getText().toString());
+//        ((MainActivity) getActivity()).makePhoneCall(valid_code);
 
+
+        //Must Modify to make call to charging number and return respond
 
     }
 
+/*
+
+    //onDestroy Text_To_Speech Engine
     @Override
     public void onDestroy() {
 
@@ -127,21 +126,24 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
         }
         super.onDestroy();
     }
+*/
 
-    private void show_carrier_name() {
+/*
+        //Display SIM-Network Provider
+        private void show_carrier_name() {
         TelephonyManager tm = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
         String network_name = tm.getNetworkOperatorName();
         NetworkName = network_name;
         phone_number.setText(network_name);
 
-    }
+    }*/
 
-    private void _Transfer_Text_To_Voice() {
-        String message = words.getText().toString();
-        mTTS.setPitch(0.8f);
-        mTTS.setSpeechRate(0.5f);
+/*
+   //Method To Speak Toast
+        private void _Transfer_Text_To_Voice(String speakText) {
+        mTTS.setPitch(0.7f);
+        mTTS.setSpeechRate(0.7f);
 
-        mTTS.speak(message, TextToSpeech.QUEUE_FLUSH, null);
-        mTTS.speak(NetworkName, TextToSpeech.QUEUE_FLUSH, null);
-    }
+        mTTS.speak(speakText, TextToSpeech.QUEUE_FLUSH, null);
+    }*/
 }

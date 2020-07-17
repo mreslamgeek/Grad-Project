@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.text.TextUtils;
@@ -25,7 +26,7 @@ public class SendFragment extends Fragment implements View.OnClickListener {
 
      Button btnSend;
      EditText etPhoneNo, etMsg;
-    private static final int MY_PERMISSION_REQUEST_SMS =0;
+    private static final int MY_PERMISSION_REQUEST_SMS =2;
 
     @Nullable
     @Override
@@ -44,18 +45,19 @@ public class SendFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    private void MYMessage() {
-        String myNumber=etPhoneNo.getText().toString().trim();
-        String myMsg=etMsg.getText().toString().trim();
+/*
+    private void _SendMessage(String NumberTOSend ,String MsgToSend) {
+        NumberTOSend = NumberTOSend.trim();
+        MsgToSend = MsgToSend.trim();
 
-        if (myNumber == null || myNumber.equals("") || myMsg == null || myMsg.equals("")){
+        if (NumberTOSend == null || NumberTOSend.equals("") || MsgToSend == null || MsgToSend.equals("")){
             Toast.makeText(getContext(), "Field cannot be empty", Toast.LENGTH_SHORT).show();
         }
         else {
 
-            if (TextUtils.isDigitsOnly(myNumber)){
+            if (TextUtils.isDigitsOnly(NumberTOSend)){
                 SmsManager smsManager=SmsManager.getDefault();
-                smsManager.sendTextMessage(myNumber,null,myMsg,null,null);
+                smsManager.sendTextMessage(NumberTOSend,null,MsgToSend,null,null);
                 Toast.makeText(getContext(), "Message sent", Toast.LENGTH_SHORT).show();
             }
             else{
@@ -65,6 +67,7 @@ public class SendFragment extends Fragment implements View.OnClickListener {
         }
 
     }
+*/
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -72,7 +75,9 @@ public class SendFragment extends Fragment implements View.OnClickListener {
         switch (requestCode){
             case  MY_PERMISSION_REQUEST_SMS:
                 if (grantResults.length >= 0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                    MYMessage();
+//                    _SendMessage(etPhoneNo.getText().toString(),etMsg.getText().toString());
+                    ((MainActivity)getActivity())._SendMessage(etPhoneNo.getText().toString(),etMsg.getText().toString());
+
                 }
                 else {
                     Toast.makeText(getContext(), "You Don't have permission" + "to make the action", Toast.LENGTH_SHORT).show();
@@ -86,7 +91,9 @@ public class SendFragment extends Fragment implements View.OnClickListener {
             case R.id.btnSend:
                 int permissionOnCheck = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS);
                 if (permissionOnCheck == PackageManager.PERMISSION_GRANTED) {
-                    MYMessage();
+//                    _SendMessage(etPhoneNo.getText().toString(),etMsg.getText().toString());
+                    ((MainActivity)getActivity())._SendMessage(etPhoneNo.getText().toString(),etMsg.getText().toString());
+
                 }
                 else {
                     ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.SEND_SMS},MY_PERMISSION_REQUEST_SMS);

@@ -4,12 +4,11 @@ public class ContactModel {
 
     String Name;
     String PhoneNumber;
-    String ImgUri;
 
-    public ContactModel(String name, String phoneNumber, String imgUri) {
+    public ContactModel(String name, String phoneNumber) {
         Name = name;
         PhoneNumber = phoneNumber;
-        ImgUri = imgUri;
+
     }
 
     public ContactModel() {
@@ -31,11 +30,4 @@ public class ContactModel {
         PhoneNumber = phoneNumber;
     }
 
-    public String getImgUri() {
-        return ImgUri;
-    }
-
-    public void setImgUri(String imgUri) {
-        ImgUri = imgUri;
-    }
 }

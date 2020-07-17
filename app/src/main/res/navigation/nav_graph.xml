@@ -9,7 +9,8 @@
         android:id="@+id/listeningFragment"
         android:name="com.eslam.speech_to_text_demoapp.ListeningFragment"
         android:label="fragment_listening"
-        tools:layout="@layout/fragment_listening" >
+        tools:layout="@layout/fragment_listening"
+        app:startDestination="@id/action_listeningFragment_to_gesturesDetector">
         <action
             android:id="@+id/action_listeningFragment_to_secondFragment"
             app:destination="@id/secondFragment" />
@@ -25,14 +26,22 @@
         <action
             android:id="@+id/action_listeningFragment_to_batteryFragment"
             app:destination="@id/batteryFragment" />
-            android:id="@+id/action_listeningFragment_to_show_number"
-            app:destination="@id/show_number" />
+
         <action
             android:id="@+id/action_listeningFragment_to_callingFragment"
             app:destination="@id/callingFragment" />
         <action
             android:id="@+id/action_listeningFragment_to_contacts_List"
             app:destination="@id/contacts_List" />
+        <action
+            android:id="@+id/action_listeningFragment_to_showNumberFragment"
+            app:destination="@id/showNumberFragment" />
+        <action
+            android:id="@+id/action_listeningFragment_to_numberDetectorFragment"
+            app:destination="@id/numberDetectorFragment" />
+        <action
+            android:id="@+id/action_listeningFragment_to_gesturesDetector"
+            app:destination="@id/gesturesDetector" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
@@ -73,4 +82,19 @@
         android:name="com.eslam.speech_to_text_demoapp.Contacts_List"
         android:label="fragment_contacts__list"
         tools:layout="@layout/fragment_contacts__list" />
+    <fragment
+        android:id="@+id/showNumberFragment"
+        android:name="com.eslam.speech_to_text_demoapp.ShowNumberFragment"
+        android:label="fragment_show_number"
+        tools:layout="@layout/fragment_show_number" />
+    <fragment
+        android:id="@+id/numberDetectorFragment"
+        android:name="com.eslam.speech_to_text_demoapp.NumberDetectorFragment"
+        android:label="fragment_number_detector"
+        tools:layout="@layout/fragment_number_detector" />
+    <fragment
+        android:id="@+id/gesturesDetector"
+        android:name="com.eslam.speech_to_text_demoapp.GesturesDetector"
+        android:label="fragment_gestures_detector"
+        tools:layout="@layout/fragment_gestures_detector" />
 </navigation>

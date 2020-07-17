@@ -7,8 +7,12 @@
     <color name="colorgradient1">#ff00cc</color>
     <color name="colorgradient2">#333399</color>
 
-        <color name="colorDark">#111111</color>
-        <color name="colorLightText">#929292</color>
+    <color name="colorDark">#111111</color>
+    <color name="colorLightText">#929292</color>
 
+    <color name="smsBackground">#FFBE00</color>
+    <color name="callBackground">#46AE03</color>
+
+    <color name="white">#FFFFFF</color>
 
 </resources>
